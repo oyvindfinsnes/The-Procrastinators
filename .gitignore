@@ -1,0 +1,10 @@
+# HEY GUYS, DO NOT TOUCH PLEASE, we need this :)
+
+# Byte-compiled Python scripts
+__pycache__/
+
+# Annoying desktop files for Mac and Windows
+.DS_Store
+desktop.ini
+
+# !!!!!!!!!!!! ^^ READ UP TOP ^^ !!!!!!!!!!!!
