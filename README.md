@@ -6,6 +6,3 @@ Semester 1 School Project during Noroff enrolment
 - Stian Andersen
 - Morten Davidsen
 - Mads Merkesdal
-
-
-print("Hello Øyvind")
