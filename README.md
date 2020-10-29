@@ -8,3 +8,4 @@ Semester 1 School Project during Noroff enrolment
 - Mads Merkesdal
 
 
+print("Hello Øyvind")
