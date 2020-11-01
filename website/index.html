@@ -1,80 +1,119 @@
 <!DOCTYPE html>
 <html>
-<head>
+  <head>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat&display=swap" rel="stylesheet">
+    <style>
+      body {
+          background-image: url("img/rainy.jpg");
+          background-repeat: no-repeat;
+          background-attachment: fixed;
+          background-size: cover;
+          width: 100vw;
+          height: 100vh;
+          margin: 0;
+          padding: 0;
+          background-color: rgb(200, 200, 200);
+          font-family: 'Montserrat', sans-serif;
+      }
 
-  <link href="https://fonts.googleapis.com/css2?family=Montserrat&display=swap" rel="stylesheet">
+      .main-menu {
+        margin: 0;
+        padding: 0;
+        top: 0;
+        width: 100%; 
+        position: absolute;
+        list-style-type: none;
+        background-color: #333333;
+      }
 
-<style>
+      .main-menu > li {
+        display: inline-block;
+      }
 
-body {
-    background-image: url("/img/rainy.jpg");
-    background-repeat: no-repeat;
-    background-attachment: fixed;
-    background-size: cover;
-    width: 100vw;
-    height: 100vh;
-    margin: 0;
-    padding: 0;
-    background-color: rgb(200, 200, 200);
-    font-family: 'Montserrat', sans-serif;
-}
+      .main-menu > li a {
+        display: block;
+        color: white;
+        text-align: center;
+        padding: 16px;
+        text-decoration: none;
+        font-size: 16px;
+      }
+    
+      .main-menu > li a:hover {
+        background-color: #111111;
+      }
 
-.flex-container {
-  display:flex;
-  background-color: dimgray;
-  width: 50%;
-  min-height: 100%;
-  justify-content: center;
-  align-items: center;
-}
+      .flex-container {
+        display:flex;
+        justify-content: center;
+        align-items: center;
+      }
 
-.flex-container > div {
-  background-color: firebrick;
-  margin: 10px;
-  padding: 20px;
-  font-size: 30px;
-}
+      .interface-container {
+        width: 50%;
+        height: 60%;
+      }
 
+      .interface-container > div {
+        width: 100%;
+      }
 
-ul {
-  list-style-type: none;
-  margin: 0;
-  padding: 0;
-  background-color: #333333;
-}
+      .bot {
+        height: 60%;
+        background-color: black;
+      }
 
-li {
-  display: inline-block;
-}
+      .chat {
+        height: 40%;
+        background-color: #222222;
+      }
+      .chatlog {
+        height: 80%;
+      }
 
-li a {
-  display: block;
-  color: white;
-  text-align: center;
-  padding: 16px;
-  text-decoration: none;
-  font-size: 16px;
-}
-li a:hover {
-  background-color: #111111;
-}
+      .input-container {
+        position: relative;
+      }
 
-</style>
-</head>
-<body>
-<ul>
-  <li><a href="#home">Home</a></li>
-  <li><a href="#about us">About us</a></li>
-  <li><a href="#about project">About project</a></li>
-</ul>
+      .user-input {
+        border: none;
+        resize: none;
+        padding: 5px 10px;
+        padding-right: 40px;
+        height: 20%;
+        width: 100%;
+        box-sizing: border-box;
+      }
+      
+      .user-input:focus {
+        outline: none;
+      }
 
-<div class="flex-container">
-  <div>
-    "marvin"
+      .user-submit {
+        position: absolute;
+        width: 30px;
+        right: 5px;
+        top: 5px;
+        
+      }
 
-  </div>
-
-
-
-</body>
+    </style>
+  </head>
+  <body class="flex-container">
+    <ul class="main-menu">
+      <li><a href="#home">Home</a></li>
+      <li><a href="#about us">About us</a></li>
+      <li><a href="#about project">About project</a></li>
+    </ul>
+    <div class="interface-container">
+      <div class="bot"></div>
+      <div class="chat">
+        <div class="chatlog"></div>
+        <div class="input-container">
+          <textarea id="userInput" class="user-input"></textarea>
+          <img id="userSubmit" class="user-submit" src="img/baseline_send_black_24dp.png">
+        </div>
+      </div>
+    </div>
+  </body>
 </html>
