@@ -17,14 +17,21 @@
     </ul>
 
     <div class="interface-container">
-        <div class="bot"></div>
+        <div class="bot-window"></div>
         <div class="chat">
-            <div class="chatlog"></div>
+            <div id="chatLog" class="chatlog">
+                <span class="user">User: efnewocmqwnfovlpæefobvl fjioernfvioefjviorenj gfoaoiern efnewoc mqwnfovlpæef obvlfjioernfv ioefjvior enjgfoaoiern</span>
+                <span class="bot">Bot: efnewocmqwnfovlpæefobvlfjioernfvioefjviorenjgfoaoiern</span>
+                <span class="user">User: efnewocmqwnfovlpæefobvlfjioernfvioefjviorenjgfoaoiern</span>
+                <span class="bot">Bot: efnewocmqwnfovlpæefobvlfjioernfvioefjviorenjgfoaoiern</span>
+            </div>
             <div class="input-container">
                 <textarea id="userInput" class="user-input"></textarea>
                 <img id="userSubmit" class="user-submit" src="src/img/send.png">
             </div>
         </div>
     </div>
+
+    <script src="src/js/main.js"></script>
 </body>
 </html>

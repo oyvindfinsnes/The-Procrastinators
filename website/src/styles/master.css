@@ -51,7 +51,7 @@ body {
     width: 100%;
 }
 
-.bot {
+.bot-window {
     height: 60%;
     background-color: black;
 }
@@ -63,6 +63,25 @@ body {
 
 .chatlog {
     height: 85%;
+    padding: 10px;
+    color: #ffffff;
+    box-sizing: border-box;
+    overflow-y: scroll;
+}
+
+.chatlog .bot,
+.chatlog .user {
+    display: block;
+    font-size: 16px;
+    margin-top: 15px;
+}
+
+.chatlog .user {
+    
+}
+
+.chatlog .bot {
+    
 }
 
 .input-container {
