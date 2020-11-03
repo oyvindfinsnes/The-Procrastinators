@@ -16,7 +16,7 @@ body {
     width: 100%; 
     position: absolute;
     list-style-type: none;
-    background-color: #333333;
+    background-color: #222222;
 }
 
 .main-menu > li {
@@ -58,49 +58,83 @@ body {
 
 .chat {
     height: 40%;
-    background-color: #222222;
 }
 
 .chatlog {
-    height: 85%;
-    padding: 10px;
+    height: 82%;
+    padding: 10px 15px;
     color: #ffffff;
-    box-sizing: border-box;
     overflow-y: scroll;
+    overflow-x: hidden;
+    word-wrap: break-word;
+    box-sizing: border-box;
+    background-color: #111111;
+}
+
+.chatlog::-webkit-scrollbar,
+.user-input::-webkit-scrollbar {
+    width: 10px;
+}
+
+.chatlog::-webkit-scrollbar-track,
+.user-input::-webkit-scrollbar-track {
+    background-color: #222222;
+}
+
+.chatlog::-webkit-scrollbar-thumb,
+.user-input::-webkit-scrollbar-thumb {
+    background-color: #444444;
+}
+
+.chatlog::-webkit-scrollbar-thumb:hover,
+.user-input::-webkit-scrollbar-thumb:hover {
+    background-color: #555555;
 }
 
 .chatlog .bot,
 .chatlog .user {
     display: block;
+    position: relative;
+    padding: 8px;
+    margin: 35px 0;
     font-size: 16px;
-    margin-top: 15px;
+    line-height: 22px;
 }
 
 .chatlog .user {
-    
+    background-color: #222222;
 }
 
 .chatlog .bot {
-    
+    background-color: #444444;
+}
+
+.chatlog .bot::before,
+.chatlog .user::before {
+    content: attr(data-name);
+    position: absolute;
+    top: -22px;
+    font-size: 14px;
+    border-radius: 5px;
 }
 
 .input-container {
-    height: 15%;
+    height: 18%;
     position: relative;
-    background-color: #52c50f;
+    background-color: #45a50e;
 }
 
 .user-input {
     border: none;
     resize: none;
-    padding: 5px 10px;
+    padding: 10px;
     height: 100%;
     width: calc(100% - 50px);
     font-size: 20px;
-    color: #000000;
+    color: #ffffff;
     font-family: sans-serif;
     box-sizing: border-box;
-    background-color: #dddddd;
+    background-color: #252525;
 }
 
 .user-input:focus {
@@ -109,7 +143,7 @@ body {
 
 .user-submit {
     position: absolute;
-    width: 30px;
+    width: 28px;
     right: 10px;
-    top: calc(50% - 15px);
+    top: calc(50% - 14px);
 }
