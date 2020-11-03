@@ -1,21 +1,21 @@
+#!/usr/bin/env python
+import sys
 from time import time
-from flask_api import FlaskAPI
-from flask import request, jsonify
 from response_handler import Chatbot
 
-start = time()
-app = FlaskAPI(__name__)
-
-@app.route("/", methods=["POST"])
-def response():
-    text = Chatbot.generate(str(request.data.get('text', '')))
+def main():
+    # Receive user input from console (ran by PHP)
+    user_text = sys.argv[1]
+    
+    # Time our response, and receive response from bot class
+    start = time()
+    response = Chatbot.generate(user_text)
     end = time()
 
-    return jsonify({
-        "response_start": start,
-        "response_end": end,
-        "response_text": text
-    })
+    # Produce our output via stdout as to not produce any extra
+    # whitespace or newlines
+    sys.stdout.write(response)
+    sys.stdout.flush()
 
 if __name__ == "__main__":
-    app.run()
+    main()
