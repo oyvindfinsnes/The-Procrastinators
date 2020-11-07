@@ -12,7 +12,7 @@ function createLogEntry(name, text) {
 
 function fetchBotResponse(input) {
     var xhttp = new XMLHttpRequest();
-    var url = "src/response-api.php";
+    var url = "src/pages/response-api.php";
     var params = "input=" + String(input);
 
     xhttp.open("POST", url, true);
@@ -39,11 +39,14 @@ function handleUserInput() {
     elem.focus();
 }
 
-function init() {
+function main() {
     document.getElementById("userInput").addEventListener("keyup", function (e) {
         if (e.code === "Enter" && !e.shiftKey) handleUserInput();
     });
     document.getElementById("userSubmit").addEventListener("click", handleUserInput);
+    
+    AnimationManager.enqueue("thoughtful-head-shake");
 }
 
-document.addEventListener("DOMContentLoaded", init);
+// Only start executing when the entire BABYLON.js scene is ready
+scene.executeWhenReady(main);

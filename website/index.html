@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <link rel="stylesheet" href="src/styles/master.css">
+    <link rel="stylesheet" href="src/css/master.css">
     <link href="https://fonts.googleapis.com/css2?family=Montserrat&display=swap" rel="stylesheet">
 
     <link rel="icon" type="image/x-icon" href="favicon.ico">
@@ -14,12 +14,14 @@
 <body class="flex-container">
     <ul class="main-menu">
         <li><a href="index.html">Home</a></li>
-        <li><a href="us.html">About us</a></li>
-        <li><a href="project.html">About project</a></li>
+        <li><a href="src/pages/us.html">About us</a></li>
+        <li><a href="src/pages/project.html">About project</a></li>
     </ul>
 
     <div class="interface-container">
-        <div class="bot-window"></div>
+        <div class="bot-window">
+            <canvas id="botCanvas" class="bot-canvas"></canvas>
+        </div>
         <div class="chat">
             <div id="chatLog" class="chatlog"></div>
             <div class="input-container">
@@ -29,6 +31,15 @@
         </div>
     </div>
 
+    <!-- The BABYLON.js library and mesh loaders used for rendering 3D models -->
+    <script src="https://cdn.babylonjs.com/babylon.js"></script>
+    <script src="https://cdn.babylonjs.com/loaders/babylonjs.loaders.min.js"></script>
+
+    <!-- Setup is responsible for creating a Babylon engine and scene, loading
+    appropriate assets and running the animation loop -->
+    <script src="src/js/babylonSetup.js"></script>
+    <!-- Manager provides a wrapper around playing and queueing up animations -->
+    <script src="src/js/animationManager.js"></script>
     <script src="src/js/main.js"></script>
 </body>
 </html>
