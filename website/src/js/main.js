@@ -39,12 +39,19 @@ function handleUserInput() {
     elem.focus();
 }
 
-function main() {
+function addChatInputListeners() {
     document.getElementById("userInput").addEventListener("keyup", function (e) {
-        if (e.code === "Enter" && !e.shiftKey) handleUserInput();
+        if (e.code === "Enter" && !e.shiftKey) {
+            handleUserInput();
+        }
     });
+
     document.getElementById("userSubmit").addEventListener("click", handleUserInput);
-    
+}
+
+function main() {
+    addChatInputListeners();
+    document.getElementById("botCanvas").classList.add("visible");
     AnimationManager.enqueue("thoughtful-head-shake");
 }
 
