@@ -172,7 +172,6 @@ body {
 .input-container {
     height: 18%;
     position: relative;
-    background-color: #45a50e;
 }
 
 .user-input {
@@ -194,9 +193,29 @@ body {
 
 .user-submit {
     position: absolute;
-    width: 28px;
-    right: 10px;
-    top: calc(50% - 14px);
+    top: 0;
+    right: 0;
+    width: 50px;
+    height: 50px;
+    background-color: #45a50e;
+}
+
+.user-submit > img {
+    width: 30px;
+    height: 30px;
+    padding: 10px;
+    user-select: none;
+    pointer-events: none;
+}
+
+.user-input,
+.user-submit {
+    transition: opacity 0.4s ease;
+}
+
+.user-input[disabled],
+.user-submit.disabled {
+    opacity: 0.3;
 }
 
 @keyframes fadeIn {

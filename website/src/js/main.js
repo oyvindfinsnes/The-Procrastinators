@@ -6,6 +6,7 @@ function Interface() {
 }
 
 Interface.prototype.init = function () {
+    // Keep a reference to this for nested functions
     var self = this;
 
     this.txtUserInput.addEventListener("keyup", function (e) {
@@ -14,9 +15,12 @@ Interface.prototype.init = function () {
         }
     });
 
-    this.btnUserSubmit.addEventListener("click", this.handleUserInput);
+    this.btnUserSubmit.addEventListener("click", function () {
+        self.handleUserInput();
+    });
 
     this.botCanvas.classList.add("visible");
+    this.btnUserSubmit.classList.remove("disabled");
     this.txtUserInput.disabled = false;
 }
 
@@ -34,7 +38,6 @@ Interface.prototype.createLogEntry = function (name, text) {
 }
 
 Interface.prototype.fetchBotResponse = function (input) {
-    var self = this;
     var xhttp = new XMLHttpRequest();
     var url = "src/pages/response-api.php";
     var params = "input=" + String(input);
@@ -42,11 +45,15 @@ Interface.prototype.fetchBotResponse = function (input) {
     xhttp.open("POST", url, true);
     xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
     
+    // Keep a reference to this for nested functions
+    var self = this;
     // As a variable was created to preserve "class this", we can use
     // both self and this to refer to the correct objects
     xhttp.onreadystatechange = function() {
         if (this.readyState == 4 && this.status == 200) {
             self.createLogEntry("bot", this.responseText);
+            AnimationManager.override("acknowledge");
+            AnimationManager.enqueue("idle");
         }
     };
 
@@ -54,7 +61,8 @@ Interface.prototype.fetchBotResponse = function (input) {
 }
 
 Interface.prototype.handleUserInput = function () {
-    // Lock the text input until a response is given
+    // Lock the text input/button until a response is given
+    this.btnUserSubmit.classList.add("disabled");
     this.txtUserInput.disabled = true;
 
     if (this.txtUserInput.value.trim() !== "") {
@@ -62,6 +70,7 @@ Interface.prototype.handleUserInput = function () {
         this.fetchBotResponse(this.txtUserInput.value);
     }
 
+    this.btnUserSubmit.classList.remove("disabled");
     this.txtUserInput.disabled = false;
     this.txtUserInput.value = "";
     this.txtUserInput.focus();
@@ -72,7 +81,7 @@ var Interface = new Interface();
 function main() {
     Interface.init();
 
-    AnimationManager.enqueue("thoughtful-head-shake");
+    AnimationManager.enqueue("idle");
 }
 
 // Only start executing when the entire BABYLON.js scene is ready
