@@ -19,10 +19,12 @@
     background-repeat: no-repeat;
 }
 
-#.chatbot_background{
-    background-image: url(6.jpg);
-    background-size: 120%;
+.chatbot_background{
+    background-image: url(marvin_head.png);
+    background-size: 25%;
     background-repeat: no-repeat;
+    background-position: center;
+    background-position-y: 280px;
 }
 
 ul{
