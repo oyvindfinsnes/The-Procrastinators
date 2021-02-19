@@ -173,3 +173,15 @@ ul li.chatbot a{
     line-height: 70px;
     text-align: center;
 }
+
+body{
+    margin: 0;
+    padding: 0;
+    height: 100vh;
+}
+
+particles-js{
+    height: 150%;
+    background: #262262;
+    size: 200%;
+}
