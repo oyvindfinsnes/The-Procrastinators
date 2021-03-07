@@ -6,7 +6,7 @@ School Project for semester 1/2 of Studio 1 during Noroff enrolment.
 
 - Øyvind Finsnes
 - Stian Andersen
-- Morten Davidsen
+- ~~Morten Davidsen~~
 - Mads Merkesdal
 
 ### Local testing/deployment requirements
