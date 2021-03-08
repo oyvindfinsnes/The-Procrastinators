@@ -1,5 +1,8 @@
-the compiler checks if bot is initialized, if not initializes
-it then checks the running OS and compiles for it
-dist/windows|linux|darwin will contain the executable
+## Making our website use the Chatbot written in Python:
+#### (Python has to be installed locally)
 
-compiler requires the pyinstaller package, bot requires aiml package
+[-] run "compiler.py" inside response-api/ using Python
+[-] fix errors that may occur, usually you should check if both the pyinstaller/
+    package and aiml package are installed for Python
+
+### a new directory "dist" should now contain the executable needed by PHP
