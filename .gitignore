@@ -7,4 +7,10 @@ __pycache__/
 .DS_Store
 desktop.ini
 
+# Compiled version of the chatbot Python script (should be compiled locally)
+dist/
+
+# The chatbot Python script brain file (should be compiled locally)
+brain.brn
+
 # !!!!!!!!!!!! ^^ READ UP TOP ^^ !!!!!!!!!!!!
