@@ -58,4 +58,5 @@ elif env == supported_env["linux"]:
         sys.exit(1)
 
 shutil.rmtree(os.path.join(current_dir, "build"))
+print("Bot has finished compiling - find result in dist/")
 sys.exit(0)

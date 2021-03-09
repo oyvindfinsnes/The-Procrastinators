@@ -2,6 +2,7 @@
 import aiml
 import sys
 import os
+import io
 
 current_dir = os.path.dirname(os.path.abspath(sys.argv[0]))
 
@@ -109,7 +110,11 @@ for predicate in predicates:
     kernel.setBotPredicate(predicate, predicates[predicate])
 
 # Reinstate the normal stdout to pipe the result to it
-sys.stdout = sys.__stdout__
+#
+# Python stdout also uses the default encoding of the terminal or console that
+# calls the script, which is normally utf-8. When called from PHP, this is not
+# the case and it defaults to CP1251, meaning utf-8 has to be set explicitly.
+sys.stdout = open(sys.__stdout__.fileno(), mode="w", encoding="utf-8", buffering=1)
 
 sys.stdout.write(kernel.respond(sys.argv[1]))
 sys.stdout.flush()

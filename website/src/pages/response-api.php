@@ -1,11 +1,22 @@
 <?php
     if (isset($_POST["input"])) {
-        $path = __DIR__ . "\\..\\..\\..\\response-api\\dist\\Windows\\Windows.exe";
-        $command = escapeshellcmd("{$path} \"{$_POST['input']}\"");
+        $current_env = php_uname("s");
+        $path_base = __DIR__ . "\\..\\..\\..\\response-api\\dist\\";
+        $path_end = [
+            "Windows NT" => "Windows\\Windows.exe",
+            "Darwin" => "Darwin\\Darwin.app",
+            "Linux" => "Linux\\Linux"
+        ];
 
+        $path = "{$path_base}{$path_end[$current_env]}";
+        $user_input = "\"{$_POST['input']}\"";
+
+        putenv('LANG=en_US.UTF-8');
+
+        $command = escapeshellcmd("{$path} {$user_input}");
         $output = shell_exec($command);
         
-        echo utf8_decode($output);
+        echo $output;
     } else {
         echo "None";
     }
