@@ -2,7 +2,6 @@
 import aiml
 import sys
 import os
-import io
 
 current_dir = os.path.dirname(os.path.abspath(sys.argv[0]))
 
