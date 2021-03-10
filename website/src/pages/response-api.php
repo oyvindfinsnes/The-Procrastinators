@@ -1,14 +1,14 @@
 <?php
     if (isset($_POST["input"])) {
         $current_env = php_uname("s");
-        $path_base = __DIR__ . "\\..\\..\\..\\response-api\\dist\\";
+        $path_base = __DIR__ . "%..%..%..%response-api%dist%";
         $path_end = [
-            "Windows NT" => "Windows\\Windows.exe",
-            "Darwin" => "Darwin\\Darwin.app",
-            "Linux" => "Linux\\Linux"
+            "Windows NT" => "Windows%Windows.exe",
+            "Darwin" => "Darwin%Darwin.app",
+            "Linux" => "Linux%Linux"
         ];
 
-        $path = "{$path_base}{$path_end[$current_env]}";
+        $path = str_replace("%", DIRECTORY_SEPARATOR, "{$path_base}{$path_end[$current_env]}");
         $user_input = "\"{$_POST['input']}\"";
 
         $command = escapeshellcmd("{$path} {$user_input}");
