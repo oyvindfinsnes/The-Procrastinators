@@ -39,7 +39,7 @@ Interface.prototype.createLogEntry = function (name, text) {
 
 Interface.prototype.fetchBotResponse = function (input) {
     var xhttp = new XMLHttpRequest();
-    var url = "src/pages/response-api.php";
+    var url = "src/pages/chatbot_interactor.php";
     var params = "input=" + String(input);
 
     xhttp.open("POST", url, true);

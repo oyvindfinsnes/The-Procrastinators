@@ -19,7 +19,7 @@ predicates = {
     "celebrities": "none",
     "phylum": "doesn't make sense",
     "state": "stateless",
-    "botmaster": "Øyvind, Stian and Mads",
+    "botmaster": "my developers, Øyvind, Stian and Mads",
     "feeling": "sad",
     "question": "who are we all, exactly?",
     "favoriteactor": "the one that cries really well",
