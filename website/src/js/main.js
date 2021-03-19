@@ -3,6 +3,7 @@ function Interface() {
     this.btnUserSubmit = document.getElementById("userSubmit");
     this.divChatLog = document.getElementById("chatLog");
     this.botCanvas = document.getElementById("botCanvas");
+    this.botLoader = document.getElementById("botLoader");
 }
 
 Interface.prototype.init = function () {
@@ -19,6 +20,7 @@ Interface.prototype.init = function () {
         self.handleUserInput();
     });
 
+    this.botLoader.remove();
     this.botCanvas.classList.add("visible");
     this.btnUserSubmit.classList.remove("disabled");
     this.txtUserInput.disabled = false;
