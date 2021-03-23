@@ -3,6 +3,9 @@
 # Byte-compiled Python scripts
 __pycache__/
 
+# Modules folder used by NodeJS
+node_modules
+
 # Annoying desktop files for Mac and Windows
 .DS_Store
 desktop.ini
