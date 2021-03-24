@@ -1,4 +1,6 @@
-# HEY GUYS, DO NOT TOUCH PLEASE, we need this :(
+# Annoying desktop files for Mac and Windows
+.DS_Store
+desktop.ini
 
 # Byte-compiled Python scripts
 __pycache__/
@@ -6,14 +8,11 @@ __pycache__/
 # Modules folder used by NodeJS
 node_modules
 
-# Annoying desktop files for Mac and Windows
-.DS_Store
-desktop.ini
+# The final product (should be packaged locally)
+release_builds/
 
-# Compiled version of the chatbot Python script (should be compiled locally)
+# Compiled version of the chatbot (should be compiled locally)
 dist/
 
-# The chatbot Python script brain file (should be compiled locally)
+# The chatbot brain file (should be compiled locally)
 brain.brn
-
-# !!!!!!!!!!!! ^^ READ UP TOP ^^ !!!!!!!!!!!!
