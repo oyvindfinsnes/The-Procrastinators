@@ -1,0 +1,18 @@
+{
+  "name": "the-procrastinators",
+  "productName": "Marvin The Paranoid Android",
+  "version": "1.0.0",
+  "license": "MIT",
+  "author": "Mads Merkesdal, Stian Andersen, Øyvind Finsnes",
+  "main": "app.js",
+  "scripts": {
+    "start": "electron .",
+    "pkg-win": "electron-packager . the-procrastinators --overwrite --platform=win32 --arch=ia32 --icon=app/img/favicon.ico --prune=true --out=release_builds",
+    "pkg-mac": "electron-packager . --overwrite --platform=darwin --arch=x64 --icon=app/img/favicon.ico --prune=true --out=release_builds",
+    "pkg-lin": "electron-packager . the-procrastinators --overwrite --platform=linux --arch=x64 --icon=app/img/favicon.ico --prune=true --out=release_builds"
+  },
+  "devDependencies": {
+    "electron": "^12.0.1",
+    "electron-packager": "^15.2.0"
+  }
+}
