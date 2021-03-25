@@ -1,7 +1,5 @@
 #!/usr/bin/env python
-import os.path as path
-import aiml
-import sys
+import os.path as path, aiml, sys
 
 kernel = aiml.Kernel()
 current_dir = path.dirname(path.abspath(sys.argv[0]))

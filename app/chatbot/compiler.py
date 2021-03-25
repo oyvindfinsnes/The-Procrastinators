@@ -1,9 +1,5 @@
 #!/usr/bin/env python
-import subprocess
-import platform
-import shutil
-import sys
-import os
+import subprocess, platform, shutil, sys, os
 
 env = platform.system()
 supported_env = {

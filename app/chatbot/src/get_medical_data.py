@@ -1,6 +1,5 @@
-import json
-import requests
-from bs4 import BeautifulSoup
+#!/usr/bin/env python
+from bs4 import BeautifulSoup, requests, json
 
 html = requests.get("https://people.dbmi.columbia.edu/~friedma/Projects/DiseaseSymptomKB/index.html")
 soup = BeautifulSoup(html.text, "html.parser")
