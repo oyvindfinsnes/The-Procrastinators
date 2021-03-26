@@ -4,26 +4,23 @@
     <meta charset="UTF-8">
 
     <link rel="stylesheet" href="css/index.css">
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Montserrat&display=swap">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Roboto&display=swap">
 
     <title>Marvin The Paranoid Android</title>
 </head>
 <body class="flex-container">
-    <!-- Start screen overlay covering the entire screen -->
     <div id="particlesBG">
         <span class="title-start">Marvin: The Paranoid Android</span>
         <input id="btnStart" class="btn-start" type="button" value="Continue >" />
     </div>
 
-    <div class="bg"></div>
-
     <ul class="main-menu">
-        <li><a href="#">Marvin</a></li>
-        <li><a href="#">About The Team</a></li>
-        <li><a href="#">About The Project</a></li>
+        <li class="menu-tab active" data-tab="marvin">Marvin</li>
+        <li class="menu-tab" data-tab="team">About The Team</li>
+        <li class="menu-tab" data-tab="project">About The Project</li>
     </ul>
 
-    <div class="interface-container">
+    <div class="interface-container active" data-tab="marvin">
         <div class="bot-window">
             <canvas id="botCanvas" class="bot-canvas"></canvas>
             <svg id="botLoader" class="loader" width="200" height="200" viewBox="0 0 100 100">
@@ -36,10 +33,29 @@
         <div class="chat">
             <div id="chatLog" class="chatlog"></div>
             <div class="input-container">
+                <span class="typing-indicator"><strong>Marvin</strong> is typing...</span>
                 <textarea id="userInput" class="user-input" disabled="true"></textarea>
                 <div id="userSubmit" class="user-submit disabled"><img src="img/send.png"></div>
             </div>
         </div>
+    </div>
+
+    <div class="interface-container interface-about" data-tab="team">
+        <h2>About the Team</h2>
+        <p>We are people and we made the thing</p>
+        <h3>Subheading</h3>
+        <p>more text using <a href="#">some stuff</a></p>
+    </div>
+
+    <div class="interface-container interface-about" data-tab="project">
+        <h2>About the Project</h2>
+        <p>The project uses a lot of things, we give some credz and acknowledgements uknow</p>
+        <h3>Marvin's 3D model</h3>
+        <p>The 3D model of Marvin was made by the user <a data-link="https://free3d.com/user/safa9raja3" href="#">safa9raja3</a> and was gotten from <a data-link="https://free3d.com/3d-model/low-poly-15101.html" href="#">Free3D.com</a>.</p>
+        <p>Further texture modifications were done by us, and rigging + animations were gotten from <a data-link="https://www.mixamo.com/#/" href="#">Adobe's Mixamo</a>.</p>
+        <h3>Marvin's brain</h3>
+        <p>His brain uses modified data files from <a data-link="https://github.com/drwallace" href="#">Richard Wallace (drwallace)</a> and is gotten from <a data-link="https://github.com/drwallace/aiml-en-us-foundation-alice" href="#">GitHub</a>.</p>
+        <p>Marvin's brain also uses medical data about symptoms connected to illnesses, gotten from <a data-link="https://people.dbmi.columbia.edu/~friedma/Projects/DiseaseSymptomKB/index.html" href="#">people.dbmi.columbia.edu</a>.</p>
     </div>
     
     <!-- ParticleJS responsible for creating the start screen particle effect,

@@ -13,7 +13,7 @@ app.on("ready", () => {
 			nodeIntegration: true,
 			contextIsolation: false,
 		},
-		icon: path.join("file://" + __dirname, "app", "img", "favicon.ico"),
+		icon: path.join(__dirname, "app", "img", "icon.png"),
     });
 
     Menu.setApplicationMenu(null);

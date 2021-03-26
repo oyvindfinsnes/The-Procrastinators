@@ -3,10 +3,12 @@ body {
     height: 100vh;
     margin: 0;
     padding: 0;
+    color: #ffffff;
     overflow: hidden;
-    font-family: "Montserrat", sans-serif;
+    user-select: none;
+    font-family: "Roboto", sans-serif;
     background: rgb(20, 20, 20);
-    background: radial-gradient(circle at 50% 55%, rgba(20, 20, 20, 1) 0%, rgba(0, 0, 0, 1) 50%);
+    background: radial-gradient(circle at 50% 55%, rgba(40, 40, 40, 1) 0%, rgba(0, 0, 0, 1) 60%);
 }
 
 #particlesBG {
@@ -37,14 +39,14 @@ body {
     position: absolute;
     top: 30%;
     left: 50%;
-    font-size: 30px;
-    color: #ffffff;
+    font-size: 40px;
     white-space: nowrap;
     transform: translate(-50%, -50%);
-    font-family: "Montserrat", sans-serif;
+    text-shadow: 1px 1px 0px #cccccc;
 }
 
 .btn-start {
+    cursor: pointer;
     position: absolute;
     top: 50%;
     left: 50%;
@@ -52,42 +54,16 @@ body {
     outline: none;
     color: #ffffff;
     padding: 10px 50px;
-    transition: color, background 0.6s ease;
     background: transparent;
     border: 1px solid #ffffff;
     transform: translate(-50%, -50%);
+    font-family: "Roboto", sans-serif;
+    transition: color, background 0.6s ease;
 }
 
 .btn-start:hover {
     color: #000000;
     background: #ffffff;
-}
-
-.main-menu {
-    margin: 0;
-    padding: 0;
-    top: 0;
-    width: 100%; 
-    position: absolute;
-    list-style-type: none;
-    background-color: #222222;
-}
-
-.main-menu > li {
-    display: inline-block;
-}
-
-.main-menu > li a {
-    display: block;
-    color: white;
-    text-align: center;
-    padding: 12px 16px;
-    text-decoration: none;
-    font-size: 14px;
-}
-
-.main-menu > li a:hover {
-    background-color: #111111;
 }
 
 .flex-container {
@@ -96,10 +72,40 @@ body {
     align-items: center;
 }
 
+.main-menu {
+    top: 0;
+    width: 100%; 
+    margin: 0;
+    padding: 0;
+    position: absolute;
+    list-style-type: none;
+    background-color: #222222;
+}
+
+.menu-tab {
+    cursor: pointer;
+    display: inline-block;
+    font-size: 14px;
+    padding: 12px 16px;
+}
+
+.menu-tab:hover {
+    background-color: #111111;
+}
+
+.menu-tab.active {
+    background-color: #000000;
+}
+
 .interface-container {
+    display: none;
     width: 600px;
     height: 700px;
     margin: 0 50px;
+}
+
+.interface-container.active {
+    display: initial;
 }
 
 .interface-container > div {
@@ -179,7 +185,6 @@ body {
 .chatlog {
     height: 82%;
     padding: 10px 15px;
-    color: #ffffff;
     overflow-y: scroll;
     overflow-x: hidden;
     word-wrap: break-word;
@@ -236,7 +241,22 @@ body {
 
 .input-container {
     height: 18%;
+    z-index: 1;
     position: relative;
+}
+
+.typing-indicator {
+    position: absolute;
+    top: 0;
+    left: 10px;
+    z-index: -1;
+    font-size: 14px;
+    color: #dddddd;
+    transition: 0.2s ease;
+}
+
+.typing-indicator.active {
+    top: -25px;
 }
 
 .user-input {
@@ -250,7 +270,7 @@ body {
     font-family: sans-serif;
     box-sizing: border-box;
     background-color: #252525;
-    font-family: 'Montserrat', sans-serif;
+    font-family: 'Roboto', sans-serif;
 }
 
 .user-input:focus {
@@ -259,11 +279,12 @@ body {
 
 .user-submit {
     position: absolute;
+    cursor: pointer;
     top: 0;
     right: 0;
     width: 50px;
     height: 50px;
-    background-color: #45a50e;
+    background-color: #3bdbff;
 }
 
 .user-submit > img {
@@ -276,12 +297,34 @@ body {
 
 .user-input,
 .user-submit {
-    transition: opacity 0.4s ease;
+    transition: background-color 0.4s ease;
 }
 
-.user-input[disabled],
+.user-input[disabled] {
+    cursor: not-allowed;
+    background-color: #151515;
+}
+
 .user-submit.disabled {
-    opacity: 0.3;
+    cursor: not-allowed;
+    background-color: #21788b;
+}
+
+.interface-about h2 {
+    font-size: 28px;
+    margin-top: 30px;
+}
+
+.interface-about h3 {
+    font-size: 24px;
+}
+
+.interface-about p {
+    font-size: 20px;
+}
+
+.interface-about a {
+    color: #2cb7fc;
 }
 
 @keyframes fadeIn {
@@ -315,8 +358,8 @@ body {
     24% { stroke: #643232; }
     25% { stroke: #327864; }
     49% { stroke: #327864; }
-    50% { stroke: #32526e; }
-    74% { stroke: #32526e; }
+    50% { stroke: #3bdbff; }
+    74% { stroke: #3bdbff; }
     75% { stroke: #78325a; }
     99% { stroke: #78325a; }
 }
