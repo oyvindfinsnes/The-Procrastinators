@@ -1,4 +1,4 @@
-# Annoying desktop files for Mac and Windows
+# Desktop files for Mac and Windows
 .DS_Store
 desktop.ini
 
@@ -12,7 +12,7 @@ node_modules
 release_builds/
 
 # Compiled version of the chatbot (should be compiled locally)
-dist/
+bin/
 
 # The chatbot brain file (should be compiled locally)
 brain.brn
