@@ -19,7 +19,7 @@ a recognizable voice. He also might give you some bad medical advice...
 #### 1. Python Chatbot compilation
 
 1. In the folder `/app/` there will be another folder named `/chatbot/` and then\
-   `/dist/`. This needs to contain a folder named after the operating system you\
+   `/bin/`. This needs to contain a folder named after the operating system you\
    are using (ex. `/Windows/`).
 - If there is a folder here named correctly after your OS, it should all work.\
 Proceed to [Electron app compilation](####-2.-Electron-app-compilation).
@@ -30,7 +30,7 @@ version of Python the project has been tested with.
 Ensure these are installed and available to Python (usually installed using `PIP`).
 1. Run the script `compiler.py` inside the `/chatbot/` folder using `Python` (running\
 the Python script using any command prompt / terminal is fine).
-5. The folder `/dist/` should now contain a folder named after your OS.
+5. The folder `/bin/` should now contain a folder named after your OS.
 
 #### 2. Electron app compilation
 

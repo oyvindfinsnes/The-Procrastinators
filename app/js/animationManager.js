@@ -44,20 +44,19 @@ class AnimationManager {
         this.meshPlaying.animation.reset();
         this.meshPlaying.animation.start(true);
         
-        const self = this;
         // For every new animation loop, check if there are animations
         // in the queue waiting to be played, if so - play the next one
         this.meshPlaying.animation.onAnimationGroupLoopObservable.add(() => {
-            if (self.queue.length > 0) {
-                self.meshPlaying.animation.onAnimationGroupLoopObservable.clear();
+            if (this.queue.length > 0) {
+                this.meshPlaying.animation.onAnimationGroupLoopObservable.clear();
     
-                self.meshPlaying.setEnabled(false);
-                self.meshPlaying.animation.stop();
+                this.meshPlaying.setEnabled(false);
+                this.meshPlaying.animation.stop();
     
-                self.isPlaying = false;
-                self._playAnimation(self.queue.shift());
+                this.isPlaying = false;
+                this._playAnimation(this.queue.shift());
             } else {
-                self._playRandomIdleAnimation();
+                this._playRandomIdleAnimation();
             }
         });
     }

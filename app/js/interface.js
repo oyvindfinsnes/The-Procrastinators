@@ -13,31 +13,30 @@ class Interface {
         this.menuTabs = document.querySelectorAll(".menu-tab");
         this.containerTabs = document.querySelectorAll(".interface-container");
         this.responseStart = Date.now();
-        const self = this;
 
         this.txtUserInput.addEventListener("keyup", e => {
             if (e.code === "Enter" && !e.shiftKey) {
-                self._handleUserInput();
+                this._handleUserInput();
             }
         });
     
         this.btnUserSubmit.addEventListener("click", () => {
-            self._handleUserInput();
+            this._handleUserInput();
         });
 
         this.btnStartScreen.addEventListener("click", () => {
-            self._handleStart();
+            this._handleStart();
         });
 
         this.menuTabs.forEach(tab => {
             tab.addEventListener("click", e => {
-                self._handleMenuNavigation(e);
+                this._handleMenuNavigation(e);
             });
         });
 
         this.links.forEach(link => {
             link.addEventListener("click", e => {
-                self._handleClickedLink(e);
+                this._handleClickedLink(e);
             });
         });
     }
@@ -60,17 +59,16 @@ class Interface {
             msDelay = (baseResponseTime + extraTime) - responseTime;
         }
         
-        const self = this;
         setTimeout(() => {
-            self._createLogEntry("bot", input);
+            this._createLogEntry("bot", input);
             AnimationManager.playRandomTalkingAnimation();
             SpeechManager.speak(input);
 
             // Unlock the text input/button
-            self.typingIndicator.classList.remove("active");
-            self.btnUserSubmit.classList.remove("disabled");
-            self.txtUserInput.disabled = false;
-            self.txtUserInput.focus();
+            this.typingIndicator.classList.remove("active");
+            this.btnUserSubmit.classList.remove("disabled");
+            this.txtUserInput.disabled = false;
+            this.txtUserInput.focus();
         }, msDelay);
     }
 
@@ -88,14 +86,19 @@ class Interface {
     }
 
     static _handleUserInput() {
-        if (this.txtUserInput.value.trim() !== "") {
+        // Get rid of unwanted newlines and carriage returns that leads to the
+        // Python input() function running multiple times at once
+        const input = this.txtUserInput.value.replace(/\r?\n|\r/g, " ").trim();
+        this.txtUserInput.value = "";
+
+        // Input that contains at least one alphanumeric character shouldn't
+        // crash the chatbot (since single characters like [#, %, \, ...] do)
+        if (input !== "" && /[A-Z]/i.test(input)) {
             this.responseStart = Date.now();
-            const input = this.txtUserInput.value;
             // Lock the text input/button until a response is given later
             this.typingIndicator.classList.add("active");
             this.btnUserSubmit.classList.add("disabled");
             this.txtUserInput.disabled = true;
-            this.txtUserInput.value = "";
 
             this._createLogEntry("user", input);
             botProcess.stdin.write(input + "\n");
@@ -107,29 +110,23 @@ class Interface {
 
         this.menuTabs.forEach(tab => {
             tab.classList.remove("active");
-
-            if (tab.dataset.tab === tabname) {
-                tab.classList.add("active");
-            }
+            if (tab.dataset.tab === tabname) tab.classList.add("active");
         });
 
         this.containerTabs.forEach(container => {
             container.classList.remove("active");
-            
-            if (container.dataset.tab === tabname) {
-                container.classList.add("active");
-            }
+            if (container.dataset.tab === tabname) container.classList.add("active");
         });
     }
 
     static _handleStart() {
         this.startScreen.classList.add("vanish");
-
-        setTimeout(() => {
+        
+        this.startScreen.addEventListener("animationend", () => {
+            Babylon.startup();
             this.particleScript.remove();
             this.startScreen.remove();
-            Babylon.startup();
-        }, 1200);
+        });
     }
 
     static _handleClickedLink(e) {

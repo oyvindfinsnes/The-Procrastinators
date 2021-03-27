@@ -6,7 +6,7 @@ const extensions = { "win32": "Windows.exe", "darwin": "Darwin.app", "linux": "L
 const env = process.platform;
 // In practice, an infinitely looping executable (the chatbot) will be receiving
 // and sending data, and needs to be initialized as soon as possible
-const botEXE = path.join(__dirname, "chatbot", "dist", platforms[env], extensions[env]);
+const botEXE = path.join(__dirname, "chatbot", "bin", platforms[env], extensions[env]);
 const botProcess = spawn(botEXE);
 
 // Executed from Babylon startup when canvas is ready
@@ -14,8 +14,6 @@ function main() {
     // All DOM elements and animations are ready to be enabled
     Interface.enable();
     AnimationManager.enable();
-
-    Interface.writeBotResponse("Greetings! If you feel that I am too loud, please adjust the volume from the top right corner.");
 
     // Any time data is received from the bot (a response), pipe it to Interface
     botProcess.stdout.on("data", data => {
