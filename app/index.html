@@ -33,8 +33,8 @@
         <div class="chat">
             <div id="chatLog" class="chatlog"></div>
             <div class="input-container">
-                <span class="typing-indicator"><strong>Marvin</strong> is typing...</span>
-                <textarea id="userInput" class="user-input" disabled="true"></textarea>
+                <span class="typing-indicator"><strong>Marvin</strong> is typing ...</span>
+                <textarea id="userInput" class="user-input" disabled="true" placeholder="Chat here ..."></textarea>
                 <div id="userSubmit" class="user-submit disabled"><img src="img/send.png"></div>
             </div>
         </div>
@@ -49,13 +49,18 @@
 
     <div class="interface-container interface-about" data-tab="project">
         <h2>About the Project</h2>
-        <p>The project uses a lot of things, we give some credz and acknowledgements uknow</p>
+        <p>As with many project, ours uses a fair bit of different components from all around the internet. This section is dedicated to shed some light on the inner workings of Marvin, and what was used to achieve the end result.</p>
+        <h3>Marvin's voice</h3>
+        <p>The TTS (Text-To-Speech) technology uses the standard JavaScript SpeechSynthesis API. If it sounds a little weird, it's because Chromium doesn't have access to the same amount of different voices that Google Chrome has, and is probably using your Operating System's default voice.</p>
         <h3>Marvin's 3D model</h3>
         <p>The 3D model of Marvin was made by the user <a data-link="https://free3d.com/user/safa9raja3" href="#">safa9raja3</a> and was gotten from <a data-link="https://free3d.com/3d-model/low-poly-15101.html" href="#">Free3D.com</a>.</p>
-        <p>Further texture modifications were done by us, and rigging + animations were gotten from <a data-link="https://www.mixamo.com/#/" href="#">Adobe's Mixamo</a>.</p>
+        <p>Further texture modifications were done by us, and rigging (creating a model skeleton for animations) + animations are from <a data-link="https://www.mixamo.com/#/" href="#">Adobe's Mixamo</a>.</p>
         <h3>Marvin's brain</h3>
-        <p>His brain uses modified data files from <a data-link="https://github.com/drwallace" href="#">Richard Wallace (drwallace)</a> and is gotten from <a data-link="https://github.com/drwallace/aiml-en-us-foundation-alice" href="#">GitHub</a>.</p>
+        <p>His brain uses modified data files from <a data-link="https://github.com/drwallace" href="#">Richard Wallace (drwallace)</a> and can be found <a data-link="https://github.com/drwallace/aiml-en-us-foundation-alice" href="#">on GitHub</a>.</p>
         <p>Marvin's brain also uses medical data about symptoms connected to illnesses, gotten from <a data-link="https://people.dbmi.columbia.edu/~friedma/Projects/DiseaseSymptomKB/index.html" href="#">people.dbmi.columbia.edu</a>.</p>
+        <p>Together these two components are used by a pre-compiled Python script to generate Marvin's responses.</p>
+        <h3>Behind the scenes and interface</h3>
+        <p>The project itself is based on NodeJS and Electron, making use of the power of JavaScript, HTML and CSS to power both logic, markup and looks.</p>
     </div>
     
     <!-- ParticleJS responsible for creating the start screen particle effect,
@@ -67,10 +72,12 @@
     <!-- Setup is responsible for creating a Babylon engine and scene, loading
     appropriate assets and running the animation loop -->
     <script type="text/javascript" src="js/babylonSetup.js"></script>
-    <!-- Interface to output to the chat -->
+    <!-- Interface to manipulate and change the screen elements -->
     <script type="text/javascript" src="js/interface.js"></script>
     <!-- Manager provides a wrapper around playing and queueing up animations -->
     <script type="text/javascript" src="js/animationManager.js"></script>
+    <!-- Manager to easily interact with TTS engine -->
+    <script type="text/javascript" src="js/speechManager.js"></script>
     <!-- Config grabs the appropriate element and displays the particle effect -->
     <script type="text/javascript" src="js/parrticleConfig.js"></script>
     <script type="text/javascript" src="js/index.js"></script>

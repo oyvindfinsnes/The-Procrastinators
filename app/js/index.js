@@ -15,6 +15,8 @@ function main() {
     Interface.enable();
     AnimationManager.enable();
 
+    Interface.writeBotResponse("Greetings! If you feel that I am too loud, please adjust the volume from the top right corner.");
+
     // Any time data is received from the bot (a response), pipe it to Interface
     botProcess.stdout.on("data", data => {
         Interface.writeBotResponse(data);

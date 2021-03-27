@@ -3,10 +3,10 @@ const path = require("path");
 
 app.on("ready", () => {
     const mainWindow = new BrowserWindow({
-		width: 1000,
-		height: 800,
-		minWidth: 1000,
-		minHeight: 800,
+		width: 950,
+		height: 760,
+		minWidth: 950,
+		minHeight: 780, // There is a slight diff of 20px from initial height
 		backgroundColor: "#000000",
 		title: "Marvin The Paranoid Android",
 		webPreferences: {
@@ -19,7 +19,7 @@ app.on("ready", () => {
     Menu.setApplicationMenu(null);
     mainWindow.loadURL(path.join("file://", __dirname, "app", "index.html"));
 
-    mainWindow.webContents.openDevTools();
+    //mainWindow.webContents.openDevTools();
 });
 
 app.on("window-all-closed", () => {

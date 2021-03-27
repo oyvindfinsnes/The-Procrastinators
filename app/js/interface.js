@@ -12,7 +12,7 @@ class Interface {
         this.links = document.querySelectorAll("a");
         this.menuTabs = document.querySelectorAll(".menu-tab");
         this.containerTabs = document.querySelectorAll(".interface-container");
-        this.responseStart = 0;
+        this.responseStart = Date.now();
         const self = this;
 
         this.txtUserInput.addEventListener("keyup", e => {
@@ -50,7 +50,7 @@ class Interface {
     }
 
     static writeBotResponse(input) {
-        const responseTime = this.responseStart - Date.now();
+        const responseTime = Date.now() - this.responseStart;
         const baseResponseTime = 1000;
         const extraTime = 10 * input.length;
         let msDelay = 0;
@@ -64,6 +64,7 @@ class Interface {
         setTimeout(() => {
             self._createLogEntry("bot", input);
             AnimationManager.playRandomTalkingAnimation();
+            SpeechManager.speak(input);
 
             // Unlock the text input/button
             self.typingIndicator.classList.remove("active");
