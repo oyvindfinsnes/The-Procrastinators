@@ -18,10 +18,10 @@ particlesJS("particlesBG", {
 			}
 		},
 		"opacity": {
-			"value": 0.5,
-			"random": false,
+			"opacity": 1,
+			"random": true,
 			"anim": {
-				"enable": false,
+				"enable": true,
 				"speed": 1,
 				"opacity_min": 0.1,
 				"sync": false

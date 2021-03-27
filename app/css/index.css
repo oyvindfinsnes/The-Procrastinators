@@ -22,7 +22,7 @@ body {
 }
 
 #particlesBG.vanish {
-    animation: fadeOut 1.5s ease forwards;
+    animation: fadeOut 1.2s ease-in forwards;
 }
 
 #particlesBG.vanish > .btn-start,
@@ -129,7 +129,7 @@ body {
 }
 
 .bot-canvas.visible {
-    animation: fadeIn 1.2s ease-in forwards;
+    animation: fadeIn 1s ease-in forwards;
 }
 
 .loader {
@@ -371,6 +371,6 @@ body {
     }
     to {
         opacity: 0;
-        transform: scale(1.5);
+        transform: scale(1.8);
     }
 }

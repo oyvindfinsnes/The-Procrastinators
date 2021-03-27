@@ -19,7 +19,7 @@ app.on("ready", () => {
     Menu.setApplicationMenu(null);
     mainWindow.loadURL(path.join("file://", __dirname, "app", "index.html"));
 
-    //mainWindow.webContents.openDevTools();
+    mainWindow.webContents.openDevTools();
 });
 
 app.on("window-all-closed", () => {
