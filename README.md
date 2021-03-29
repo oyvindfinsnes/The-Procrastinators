@@ -8,10 +8,10 @@ a recognizable voice. He also might give you some bad medical advice...
 
 ### Team members who made this possible
 
-- Øyvind Finsnes
-- Stian Andersen
-- Mads Merkesdal
-- ~~Morten Davidsen~~ :(
+-  Øyvind Finsnes
+-  Stian Andersen
+-  Mads Merkesdal
+-  ~~Morten Davidsen~~ :(
 
 ## Local testing/compilation requirements.
 ##### (NOTE: This is not really intended for anyone to do, we will provide you<br/>with the correct final application, but this is here for those who want it and<br/>are interested).
@@ -19,18 +19,22 @@ a recognizable voice. He also might give you some bad medical advice...
 #### 1. Python Chatbot compilation
 
 1. In the folder `/app/` there will be another folder named `/chatbot/` and then\
-   `/bin/`. This needs to contain a folder named after the operating system you\
-   are using (ex. `/Windows/`).
-- If there is a folder here named correctly after your OS, it should all work.\
-Proceed to [Electron app compilation](####-2.-Electron-app-compilation).
-- If there is a folder there named something else than your OS, continue the steps.
+   `/bin/`. This needs to contain a file (executable) named after the operating\
+   system you are using (ex. `Windows.exe`).
+-  If there is a file here named correctly after your OS, proceed to\
+   [Electron app compilation](####-2.-Electron-app-compilation).
+-  If there is a file there named something else than your OS, continue the steps.
 1. Your machine needs a local installation of `Python` (3.6.x), which is the only\
-version of Python the project has been tested with.
-3. The chatbot is dependent on the packages `pyinstaller`, `aiml` and `spacy`.\
-Ensure these are installed and available to Python (usually installed using `PIP`).
-1. Run the script `compiler.py` inside the `/chatbot/` folder using `Python` (running\
-the Python script using any command prompt / terminal is fine).
-5. The folder `/bin/` should now contain a folder named after your OS.
+   version of Python the project has been tested with.
+2. The chatbot is dependent on some packages described in `requirements.txt`,\
+   located in the `/chatbot/` directory. Ensure these are installed and available\
+   to Python (usually installed using `PIP`). To do this, run the following:
+   ```
+   python -m pip install -r requirements.txt
+   ```
+3. Run the script `compiler.py` inside the `/chatbot/` folder using `Python` (running\
+   the Python script using any command prompt / terminal is fine).
+4. The folder `/bin/` should now contain a file (executable) named after your OS.
 
 #### 2. Electron app compilation
 
@@ -50,7 +54,7 @@ the Python script using any command prompt / terminal is fine).
 
    npm run pkg-lin
    ```
-5. The packaged app will appear under `/release-builds/`.
+5. The packaged app will appear under `/release_builds/`.
 
 #### 3. HELP! My (already compiled) application doesn't work
 
@@ -58,14 +62,14 @@ In a situation like this with a lot of moving parts, it can be hard to tell why\
 the application won't run. However, in all likelihood, it would be one of the\
 issues listed below (this is not an extensive list by any means):
 
-- We encountered an issue on Windows machines where Windows Defender (and likely\
-  other antivirus software) will tag unsigned executables as a threat. Depending\
-  on how the Electron app was compiled, this may be an issue for the Chatbot\
-  executable as we have experienced. The solution is simply to try running it\
-  again, and if the issue persist try to whitelist the program.
-- The application has not been tested on MacOS, and might very well fail at most\
-  points.
-- The application has barely been tested on Linux, and only one distribution at\
-  that (Arch Linux - Manjaro).
-- Building for MacOS on Windows yields an error because Windows needs admin\
-  privileges to form symlinks. Build for MacOS on another platform.
+-  We encountered an issue on Windows machines where Windows Defender (and likely\
+   other antivirus software) will tag unsigned executables as a threat. Depending\
+   on how the Electron app was compiled, this may be an issue for the Chatbot\
+   executable as we have experienced. The solution is simply to try running it\
+   again, and if the issue persist try to whitelist the program.
+-  The application has not been tested on MacOS, and might very well fail at most\
+   points.
+-  The application has barely been tested on Linux, and only one distribution at\
+   that (Arch Linux - Manjaro).
+-  Building for MacOS on Windows yields an error because Windows needs admin\
+   privileges to form symlinks. Build for MacOS on another platform.
