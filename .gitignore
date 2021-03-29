@@ -14,5 +14,6 @@ release_builds/
 # Compiled version of the chatbot (should be compiled locally)
 bin/
 
-# The chatbot brain file (should be compiled locally)
+# The chatbot symptoms data and brain file (should be gotten and compiled locally)
+symptoms.json
 brain.brn
