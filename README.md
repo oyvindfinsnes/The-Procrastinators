@@ -13,7 +13,7 @@ a recognizable voice. He also might give you some bad medical advice...
 -  Mads Merkesdal
 -  ~~Morten Davidsen~~ :(
 
-## Local testing/compilation requirements.
+## Local testing/compilation requirements
 ##### (NOTE: This is not really intended for anyone to do, we will provide you<br/>with the correct final application, but this is here for those who want it and<br/>are interested).
 
 #### 1. Python Chatbot compilation
