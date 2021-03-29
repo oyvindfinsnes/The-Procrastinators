@@ -1,12 +1,11 @@
 const { spawn } = require("child_process");
 const path = require("path");
 
-const platforms = { "win32": "Windows", "darwin": "Darwin", "linux": "Linux" };
-const extensions = { "win32": "Windows.exe", "darwin": "Darwin.app", "linux": "Linux" }
+const platforms = { "win32": "Windows.exe", "darwin": "Darwin.app", "linux": "Linux" }
 const env = process.platform;
 // In practice, an infinitely looping executable (the chatbot) will be receiving
 // and sending data, and needs to be initialized as soon as possible
-const botEXE = path.join(__dirname, "chatbot", "bin", platforms[env], extensions[env]);
+const botEXE = path.join(__dirname, "chatbot", "bin", platforms[env]);
 const botProcess = spawn(botEXE);
 
 // Executed from Babylon startup when canvas is ready

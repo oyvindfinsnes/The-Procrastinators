@@ -34,9 +34,10 @@ body {
     opacity: 0;
 }
 
+.warning,
 .btn-start,
 .title-start {
-    z-index: 5;
+    z-index: 6;
     transition: opacity 0.5s ease;
 }
 
@@ -69,6 +70,18 @@ body {
 .btn-start:hover {
     color: #000000;
     background: #ffffff;
+}
+
+.warning {
+    position: absolute;
+    left: 50%;
+    bottom: 5%;
+    font-size: 14px;
+    padding: 10px 15px;
+    color: #cccccc;
+    border: 1px solid #cccccc;
+    background-color: #080808;
+    transform: translateX(-50%);
 }
 
 .flex-container {

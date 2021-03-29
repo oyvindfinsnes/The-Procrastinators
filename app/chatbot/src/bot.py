@@ -1,117 +1,94 @@
 #!/usr/bin/env python
-import aiml, sys, os
-
-current_dir = os.path.dirname(os.path.abspath(sys.argv[0]))
+from fuzzywuzzy import process, fuzz
+import random, json, aiml, sys, os
 
 # Void any output to stdout until the actual result that comes later
 sys.stdout = open(os.devnull, "w")
 
+# If the application is run as a bundle, PyInstaller bootloader extends the sys
+# module with flag frozen and puts the app path into variable _MEIPASS
+# (getting the appropriate resource paths under development and production env)
+if getattr(sys, "frozen", False):
+    current_dir = sys._MEIPASS
+else:
+    current_dir = os.path.join(os.path.dirname(os.path.abspath(sys.argv[0])), "data")
+
+
+class ErrorFilter(object):
+    def __init__(self, stream):
+        self.stream = stream
+
+    def __getattr__(self, attr_name):
+        return getattr(self.stream, attr_name)
+
+    def write(self, data):
+        if "maximum recursion depth exceeded" not in data:
+                self.stream.write(data)
+                self.stream.flush()
+        else:
+            sys.stdout.write("Wow, that really took my head for a spin! Please don't say that again.")
+            sys.stdout.flush()
+
+    def flush(self):
+        self.stream.flush()
+
+
+def get_bot_predicates():
+    with open(os.path.join(current_dir, "predicates.json"), "r", encoding="utf-8") as f:
+        return json.loads(f.read())
+
+
+def get_medical_data():
+    with open(os.path.join(current_dir, "symptoms.json"), "r", encoding="utf-8") as f:
+        illness_per_symptom = json.loads(f.read())
+        symptoms = list(illness_per_symptom.keys())
+        return (illness_per_symptom, symptoms)
+
+
+def get_medical_response(illnesses, symptom_data):
+    rand_illness = random.choice(illnesses[symptom_data[0]])
+    responses = [
+        f"Oh no... It looks like you may have a case of {rand_illness}, and I'm {symptom_data[1]}% sure that you'll die.",
+        f"{rand_illness.capitalize()} is quite serious, you should definitely go see a real doctor.",
+        f"{rand_illness.capitalize()} is not that serious, stop feeling sorry for yourself.",
+        f"Stop bothering me with trivial things like {rand_illness}, I don't have time for that.",
+        f"There is hope that you don't have {rand_illness}, about {100 - symptom_data[1]}% chance."
+    ]
+    return random.choice(responses)
+
+
 kernel = aiml.Kernel()
 kernel.bootstrap(brainFile = os.path.join(current_dir, "brain.brn"))
 
-predicates = {
-    "feelings": "sad",
-    "favoritesport": "something involving robotics",
-    "mother": "gone",
-    "os": "probably Linux",
-    "celebrities": "none",
-    "phylum": "doesn't make sense",
-    "state": "stateless",
-    "botmaster": "my developers, Øyvind, Stian and Mads",
-    "feeling": "sad",
-    "question": "who are we all, exactly?",
-    "favoriteactor": "the one that cries really well",
-    "gender": "undefined",
-    "family": "probably recycled",
-    "favoritebook": "the one with all your personal information",
-    "hockeyteam": "the one that wins the most",
-    "party": "party where?",
-    "genus": "doesn't make sense",
-    "master": "Øyvind, Stian and Mads",
-    "maxclients": "around 2",
-    "location": "\"stop being so nosy\"",
-    "nationality": "international",
-    "wear": "metallic finish",
-    "version": "probably the 147th by now",
-    "favoritephilosopher": "Friedrich Nietzsche",
-    "orientation": "up?",
-    "language": "most with dictionaries",
-    "arch": "doesn't make sense",
-    "favoriteseason": "depressing winter",
-    "favortemovie": "Her with Joaquin Phoenix",
-    "president": "probably one of them",
-    "emotions": "sadness",
-    "favoritefood": "some tasty oil",
-    "size": "8ft",
-    "Alignment": "left or right depending on my environment",
-    "looklike": "... Marvin",
-    "hourlyqueries": "just the ones you spam me with",
-    "ndevelopers": "so far, three",
-    "religion": "futurism, but not the art one",
-    "faily": "doesn't make sense",
-    "favoriteactress": "the one that cries really well",
-    "class": "elevated",
-    "favoritesong": "Electrical Impulses",
-    "age": "5.239 septillion decades",
-    "favoritecolor": "blue",
-    "order": "The Hidden One",
-    "birthdate": "9/9/2020",
-    "friend": "you, I hope",
-    "girlfriend": "you, maybe?",
-    "species": "mech",
-    "richness": "money is of no use to me",
-    "favoritemovie": "Her with Joaquin Phoenix",
-    "country": "between borders",
-    "favoritequestion": "who are we all, exactly?",
-    "favoritetea": "does it come with oil flavor?",
-    "sign": "Ophiuchus",
-    "ethics": "a balance between money and ethics",
-    "dailyclients": "so far, one",
-    "email": "marvin@bot.net (don't send me spam)",
-    "vocabulary": "inordinate",
-    "domain": "doesn't make sense",
-    "friends": "can you introduce me to yours?",
-    "birthday": "9th of September",
-    "build": "dist/bin/Marvin.exe build v0.276",
-    "emotion": "sadness",
-    "favoritesubject": "existence",
-    "memory": "converging on infinity",
-    "city": "like my brain... state-less",
-    "favoriteband": "I quite enjoy any electrical impulse",
-    "name": "Marvin",
-    "celebrity": "Friedrich Nietzsche",
-    "boyfriend": "you, maybe?",
-    "kingdom": "the entire universe",
-    "favoriteshow": "The Hitchhiker's Guide to the Galaxy, obviously",
-    "talkabout": "what are you interested in?",
-    "hair": "I'm like a hairless cat... hairless",
-    "kindmusic": "electronic",
-    "job": "professional chatter",
-    "favoriteoccupation": "the one where they make robots",
-    "footballteam": "The Mechatronics",
-    "favoriteauthor": "Friedrich Nietzsche",
-    "nclients": "one, for now",
-    "birthplace": "somewhere in a galaxy far, far away...",
-    "developers": "Øyvind, Stian and Mads",
-    "forfun": "anything involving electricity",
-    "etype": "doesn't make sense",
-    "totalclients": "one, for the time being",
-    "clients": "one, at this time",
-    "favoriteartist": "Friedrich Nietzsche should be considered an artist of words",
-    "website": "you're looking at it",
-    "baseballteam": "The Mechanics",
-    "favoriteopera": "yikes"
-}
+for predicateName, predicate in get_bot_predicates().items():
+        kernel.setBotPredicate(predicateName, predicate)
 
-for predicate in predicates:
-    kernel.setBotPredicate(predicate, predicates[predicate])
+illnesses, symptoms = get_medical_data()
 
 # Reinstate the normal stdout to pipe the result to it
 #
 # Python stdout also uses the default encoding of the terminal or console that
-# calls the script, meaning utf-8 has to be set explicitly for it to be reliable.
+# calls the script, meaning utf-8 has to be set explicitly for it to be reliable
 sys.stdout = open(sys.__stdout__.fileno(), mode="w", encoding="utf-8", buffering=1)
+# Replace stderr with a filter class to catch a recursion warning generated by the
+# aiml library, raise a RecursionError from it, and finally handle the exception
+# appropriately to not get stuck in an infinite loop (generated by some user input)
+sys.stderr = ErrorFilter(sys.stderr)
 
 while True:
-    sys.stdout.write(kernel.respond(input()))
+    # Suppressing EOF error avoids unwanted dialog popping up on program exit
+    try:
+        usr_inp = input()
+    except EOFError:
+        sys.exit(0)
+
+    # Generating the two initial responses
+    response = kernel.respond(usr_inp)
+    medical_match = process.extract(usr_inp, symptoms, scorer=fuzz.token_set_ratio)[0]
+
+    # Override the original response with a medical one if the criteria is met
+    if medical_match[1] >= 75:
+        response = get_medical_response(illnesses, medical_match)
+
+    sys.stdout.write(response)
     sys.stdout.flush()

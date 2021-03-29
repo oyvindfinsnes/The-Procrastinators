@@ -93,7 +93,7 @@ class Interface {
 
         // Input that contains at least one alphanumeric character shouldn't
         // crash the chatbot (since single characters like [#, %, \, ...] do)
-        if (input !== "" && /[A-Z]/i.test(input)) {
+        if (input !== "" && /[A-Z0-9]/i.test(input)) {
             this.responseStart = Date.now();
             // Lock the text input/button until a response is given later
             this.typingIndicator.classList.add("active");
