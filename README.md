@@ -23,7 +23,8 @@ a recognizable voice. He also might give you some bad medical advice...
    system you are using (ex. `Windows.exe`).
 -  If there is a file here named correctly after your OS, proceed to\
    [Electron app compilation](####-2.-Electron-app-compilation).
--  If there is a file there named something else than your OS, continue the steps.
+-  If there is a file here named something else than your OS, or the\
+   `/bin/` folder does not exist yet, continue the steps.
 1. Your machine needs a local installation of `Python` (3.6.x), which is the only\
    version of Python the project has been tested with.
 2. The chatbot is dependent on some packages described in `requirements.txt`,\
