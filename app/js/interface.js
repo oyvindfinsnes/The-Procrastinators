@@ -78,7 +78,8 @@ class Interface {
         node.setAttribute("class", name);
         // Capitalizing the first letter of the name
         node.setAttribute("data-name", name.charAt(0).toUpperCase() + name.slice(1));
-        node.textContent = text;
+        
+        node.innerHTML = text
     
         this.divChatLog.appendChild(node);
         // Scroll the chat log to bottom on new entry
