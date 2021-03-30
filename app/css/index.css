@@ -22,6 +22,7 @@ body {
 }
 
 #particlesBG > canvas {
+    pointer-events: none;
     animation: fadeIn 0.5s ease-in forwards;
 }
 
@@ -329,6 +330,7 @@ body {
 
 .interface-container a {
     color: #2cb7fc;
+    cursor: pointer;
 }
 
 .scroll {

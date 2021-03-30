@@ -1,3 +1,5 @@
+const opn = require("opn");
+
 class Interface {
     static init() {
         this.typingIndicator = document.querySelector(".typing-indicator");
@@ -62,7 +64,6 @@ class Interface {
         setTimeout(() => {
             this._createLogEntry("bot", input);
             AnimationManager.playRandomTalkingAnimation();
-            SpeechManager.speak(input);
 
             // Unlock the text input/button
             this.typingIndicator.classList.remove("active");
@@ -131,7 +132,6 @@ class Interface {
     }
 
     static _handleClickedLink(e) {
-        const opn = require("opn");
         opn(e.currentTarget.dataset.link);
     }
 }

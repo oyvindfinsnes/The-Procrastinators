@@ -26,22 +26,26 @@ a recognizable voice. He also might give you some bad medical advice...
 -  If there is a file here named something else than your OS, or the\
    `/bin/` folder does not exist yet, continue the steps.
 1. Your machine needs a local installation of `Python` (3.6.x), which is the only\
-   version of Python the project has been tested with.
+   version of Python the project has been tested with.\
+   (https://www.python.org/downloads/)
 2. The chatbot is dependent on some packages described in `requirements.txt`,\
    located in the `/chatbot/` directory. Ensure these are installed and available\
-   to Python (usually installed using `PIP`). To do this, run the following:
+   to Python. Run the following INSIDE THE `/chatbot/` DIRECTORY:
    ```
    python -m pip install -r requirements.txt
    ```
-3. Run the script `compiler.py` inside the `/chatbot/` folder using `Python` (running\
-   the Python script using any command prompt / terminal is fine).
+3. Run the script `compiler.py` INSIDE THE `/chatbot/` DIRECTORY using `Python`:
+   ```
+   python ./compiler.py
+   ```
 4. The folder `/bin/` should now contain a file (executable) named after your OS.
 
 #### 2. Electron app compilation
 
 1. Download the `NodeJS` runtime (with `npm`). `npm` should now be available as\
-   a global command.
-2. Navigate into the project folder (at the top level) and run:
+   a global command.\
+   (https://nodejs.org/en/)
+2. Navigate into the project folder AT THE TOP LEVEL and run:
    ```
    npm install
    ```
@@ -68,6 +72,17 @@ issues listed below (this is not an extensive list by any means):
    on how the Electron app was compiled, this may be an issue for the Chatbot\
    executable as we have experienced. The solution is simply to try running it\
    again, and if the issue persist try to whitelist the program.
+-  We encountered another issue on Windows where the executable wouldn't run,\
+   most likely due to Windows Defender or some other antivirus flagging it. As\
+   this might also happen on other Operating Systems, try to run the executable\
+   in cmd/terminal if it does:
+   ```
+   ./the-procrastinators.exe (Windows)
+
+   ./the-procrastinators.app (MacOS)
+
+   ./the-procrastinators (Linux)
+   ```
 -  The application has not been tested on MacOS, and might very well fail at most\
    points.
 -  The application has barely been tested on Linux, and only one distribution at\

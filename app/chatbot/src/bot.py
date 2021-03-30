@@ -48,9 +48,9 @@ def get_medical_data():
 def get_medical_response(illnesses, symptom_data):
     rand_illness = random.choice(illnesses[symptom_data[0]])
 
-    link_handler = "const opn = require('opn');opn(this.dataset.link);"
+    link_handler = "opn(this.dataset.link);"
     link_uri = f"https://www.google.com/search?q={rand_illness}"
-    illness_link = f"<a data-link=\"{link_uri}\" href=\"#\" onclick=\"{link_handler}\">{rand_illness.capitalize()}</a>"
+    illness_link = f"<a data-link=\"{link_uri}\" onclick=\"{link_handler}\">{rand_illness.capitalize()}</a>"
     
     responses = [
         f"Oh no... It looks like you may have a case of {illness_link}, and I'm {symptom_data[1]}% sure that you'll die.",
