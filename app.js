@@ -2,6 +2,8 @@ const { app, Menu, BrowserWindow } = require("electron");
 const path = require("path");
 
 app.on("ready", () => {
+	Menu.setApplicationMenu(null);
+
     const mainWindow = new BrowserWindow({
 		width: 950,
 		height: 760,
@@ -16,10 +18,7 @@ app.on("ready", () => {
 		icon: path.join(__dirname, "app", "img", "icon.png"),
     });
 
-    Menu.setApplicationMenu(null);
     mainWindow.loadURL(path.join("file://", __dirname, "app", "index.html"));
-
-    mainWindow.webContents.openDevTools();
 });
 
 app.on("window-all-closed", () => {
