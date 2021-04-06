@@ -1,5 +1,6 @@
 const { spawn } = require("child_process");
 const path = require("path");
+const opn = require("opn");
 
 const platforms = { "win32": "Windows.exe", "darwin": "Darwin.app", "linux": "Linux" }
 const env = process.platform;

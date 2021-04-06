@@ -210,8 +210,8 @@ body {
     background-color: #111111;
 }
 
-.chatlog .bot,
-.chatlog .user {
+.chatlog .user,
+.chatlog .marvin {
     display: block;
     position: relative;
     padding: 8px;
@@ -224,12 +224,12 @@ body {
     background-color: #222222;
 }
 
-.chatlog .bot {
+.chatlog .marvin {
     background-color: #444444;
 }
 
-.chatlog .bot::before,
-.chatlog .user::before {
+.chatlog .user::before,
+.chatlog .marvin::before {
     content: attr(data-name);
     position: absolute;
     top: -22px;

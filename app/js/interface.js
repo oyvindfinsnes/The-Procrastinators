@@ -1,5 +1,3 @@
-const opn = require("opn");
-
 class Interface {
     static init() {
         this.typingIndicator = document.querySelector(".typing-indicator");
@@ -62,7 +60,7 @@ class Interface {
         }
         
         setTimeout(() => {
-            this._createLogEntry("bot", input);
+            this._createLogEntry("marvin", input);
             AnimationManager.playRandomTalkingAnimation();
 
             // Unlock the text input/button
