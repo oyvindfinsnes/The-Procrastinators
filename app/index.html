@@ -60,7 +60,7 @@
         <p>Further texture modifications were done by us, and rigging (creating a model skeleton for animations) + animations are from <a data-link="https://www.mixamo.com/#/">Adobe's Mixamo</a>.</p>
         <h3>Marvin's brain</h3>
         <p>His brain uses modified data files from Richard Wallace (drwallace), which can be found on <a data-link="https://github.com/drwallace/aiml-en-us-foundation-alice">GitHub</a>, utilized by the <a data-link="https://pypi.org/project/aiml/">aiml package</a> from PyPi.</p>
-        <p>Marvin's brain also uses medical data about symptoms connected to illnesses, gotten from <a data-link="https://people.dbmi.columbia.edu/~friedma/Projects/DiseaseSymptomKB/index.html">people.dbmi.columbia.edu</a>, then used by the <a data-link="https://pypi.org/project/ChatterBot/">ChatterBot package</a> from PyPi.</p>
+        <p>Marvin's brain also uses medical data about symptoms connected to illnesses, gotten from <a data-link="https://people.dbmi.columbia.edu/~friedma/Projects/DiseaseSymptomKB/index.html">people.dbmi.columbia.edu</a>, then used together with the <a data-link="https://pypi.org/project/fuzzywuzzy/">FuzzyWuzzy package</a> from PyPi to retrieve a good match.</p>
         <p>Together these two components are used by a pre-compiled Python script to generate Marvin's responses and decide the final output.</p>
         <h3>Behind the scenes and interface</h3>
         <p>The project itself is based on the NodeJS JavaScript runtime + Electron, making use of the power of HTML, CSS and JavaScript to achieve markup, styling and logic.</p>
