@@ -49,7 +49,7 @@ def get_medical_response(illnesses, symptom_data):
     rand_illness = random.choice(illnesses[symptom_data[0]])
 
     link_handler = "opn(this.dataset.link);"
-    link_uri = f"https://www.google.com/search?q={rand_illness}+symptoms"
+    link_uri = f"https://www.google.com/search?q={'+'.join(rand_illness.split(' '))}+symptoms"
     illness_link = f"<a data-link=\"{link_uri}\" onclick=\"{link_handler}\">{rand_illness.capitalize()}</a>"
     
     responses = [
