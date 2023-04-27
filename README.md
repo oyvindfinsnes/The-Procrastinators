@@ -3,8 +3,12 @@
 School Project for Studio 1 during Noroff enrolment.\
 Marvin is a Chatbot project intended to provide the user with a fuller experience\
 of what it is to communicate with a computer. In a sense, it's communication\
-between you and your own computer, but dressed up with animations, 3D-models and\
-a recognizable voice. He also might give you some bad medical advice...
+between you and your own computer, but dressed up with animations, 3D-models ~~and\
+a recognizable voice~~. He also might give you some bad medical advice...
+
+### What does Marvin look like?
+
+![Screenshot 2023-04-27 185835](https://user-images.githubusercontent.com/22096766/234936038-fca7d0c3-86bf-4f7d-ba13-2daddfefeff0.png)
 
 ### Team members who made this possible
 
@@ -14,7 +18,7 @@ a recognizable voice. He also might give you some bad medical advice...
 -  ~~Morten Davidsen~~ :(
 
 ## Local testing/compilation requirements
-##### (NOTE: This is not really intended for anyone to do, we will provide you<br/>with the correct final application, but this is here for those who want it and<br/>are interested).
+##### (NOTE: This uses a Python script compiled to an executable that is run using NodeJS).
 
 #### 1. Python Chatbot compilation
 
